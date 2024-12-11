@@ -9,6 +9,7 @@ from nltk.stem.snowball import EnglishStemmer
 from nltk.stem import WordNetLemmatizer
 from nltk.tokenize import word_tokenize
 nltk.download('wordnet')
+nltk.download('punkt_tab')
 
 def text_description():
     
