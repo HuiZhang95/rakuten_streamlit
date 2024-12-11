@@ -47,6 +47,7 @@ def text_description():
     'under','until','up','ve','very','was','wasn',"wasn't",'we','were','weren',"weren't",'what','when','where','which','while','who',
     'whom','why','will','with','won',"won't",'wouldn',"wouldn't",'y','you',"you'd","you'll","you're","you've",'your','yours','yourself',
     'yourselves'}
+    
     stop_words.update(['the', 'and','for', 'from', 'was', 'what', 'with', 'this', \
                     'that',  'don', 'pure', 'lot', 'are', 'who', 'more', 'will', 'tab', \
                     'each' , 'would', 'but', 'not','its','all','your', 'last','over', \
