@@ -7,6 +7,7 @@ from cleantext import clean
 from nltk.corpus import stopwords
 from nltk.stem.snowball import EnglishStemmer
 from nltk.stem import WordNetLemmatizer
+from nltk.tokenize import word_tokenize
 nltk.download('wordnet')
 
 def text_description():
@@ -65,18 +66,13 @@ def text_description():
             replace_with_email = ' ',
             lang = 'en'
         )
-
         # Remove all special characters and punctuation
         text = re.sub(r"[^A-Za-z0-9\s]+", " ", text)
-
         # Remove repeated characters
         text = re.sub(r'(.)\1{3,}',r'\1', text)
-        
         # remove extra spaces, tabs, and new lines
         text = " ".join(text.split())
-
         w = str(text)
-
         w = unicode_to_ascii(w.lower().strip())
         # creating a space between a word and the punctuation following it
         # eg: "he is a boy." => "he is a boy ."
@@ -85,11 +81,9 @@ def text_description():
         # replacing everything with space except (a-z, A-Z, ".", "?", "!", ",")
         w = re.sub(r"[^a-zA-Z0-9?.!]+", " ", w)
         w = re.sub(r'\b\w{0,2}\b', '', w)
-
         # stem the word
         words = word_tokenize(w.strip())
         words2 = [stemmer.stem(word) for word in words]
-
         # lemmatize the word
         words3 = lemmatization(words2)
 
