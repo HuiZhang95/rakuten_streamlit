@@ -5,6 +5,7 @@ import numpy as np
 #
 import tensorflow as tf
 from tensorflow import keras
+from tensorflow.keras.preprocessing import text
 # from tensorflow.keras import Sequential
 # from tensorflow.keras.layers import Embedding, Dense, GlobalAveragePooling1D, RNN, GRUCell, Dropout
 # import sklearn
@@ -14,10 +15,10 @@ import pandas as pd
 
 #@st.cache_data
 def load_rnn():
-    model = tf.keras.models.load_model('images_hz/model_RNN.keras')
-    # with open('images_hz/model_RNN_tokenizer.pkl','rb') as f:  # Python 3: open(..., 'rb')
-    #     tokenizer = pickle.load(f)
-    return model
+    # model = tf.keras.models.load_model('images_hz/model_RNN.keras')
+    with open('images_hz/model_RNN_tokenizer.pkl','rb') as f:  # Python 3: open(..., 'rb')
+        tokenizer = pickle.load(f)
+    return tokenizer
 
 # #@st.cache_data
 # def load_svc():
