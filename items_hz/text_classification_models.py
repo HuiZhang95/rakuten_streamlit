@@ -3,9 +3,9 @@ from PIL import Image
 
 def text_classification_models():
     
-    st.markdown("<b2>.stExpander > div1 > div2 { font-size: 20px; }<b2>", unsafe_allow_html=True)
-    with st.expander("Customized recurrent neural network (RNN)"):
-        st.markdown("<h3>Background + procedure (RNN)</h3>", unsafe_allow_html = True)
+    st.markdown("<h3>Customized recurrent neural network (RNN)</h3>", unsafe_allow_html = True)
+    with st.expander(" "):
+        st.markdown("<h3>Background + procedure</h3>", unsafe_allow_html = True)
 
         st.write("Recurrent layers are designed to capture sequential relationships within the data."
                 "This is especially important for the text information in the present project. "
@@ -28,7 +28,8 @@ def text_classification_models():
         img = Image.open("images_hz/RNN result 2.jpg")
         st.image(img, use_container_width = True)
 
-    with st.expander("SVM with gridsearch"):
+    st.markdown("<h3>SVM with gridsearch</h3>", unsafe_allow_html = True)
+    with st.expander(" "):
         st.markdown("<h3>Background + procedure (RNN)</h3>", unsafe_allow_html = True)
 
         st.write("SVM aims to identify decision boundaries that maximize the margin between categories,"
