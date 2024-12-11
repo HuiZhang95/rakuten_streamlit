@@ -76,7 +76,7 @@ def text_classification_models():
         return clf
     
     def scores(clf, user_input_word):
-        return clf.predict(user_input_word)
+        return prediction(option).predict(user_input_word)
 
 
     # use the st.selectbox() method to choose between the RandomForest classifier, the SVM classifier and the LogisticRegression classifier. Then return to the Streamlit web application to view the select box.
