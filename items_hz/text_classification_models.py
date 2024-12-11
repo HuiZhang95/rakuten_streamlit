@@ -2,6 +2,12 @@ import streamlit as st
 from PIL import Image
 import pickle
 
+import tensorflow as tf
+from tensorflow.keras import Sequential
+from tensorflow.keras.layers import Embedding, Dense, GlobalAveragePooling1D, RNN, GRUCell, Dropout
+import sklearn
+import pandas as pd
+
 # from sklearn.ensemble import RandomForestClassifier
 # from sklearn.svm import SVC
 # from sklearn.linear_model import LogisticRegression
@@ -76,7 +82,7 @@ def text_classification_models():
         return clf
     
     def scores(clf, user_input_word):
-        return prediction(clf).predict(user_input_word)
+        return clf.predict(user_input_word)
 
 
     # use the st.selectbox() method to choose between the RandomForest classifier, the SVM classifier and the LogisticRegression classifier. Then return to the Streamlit web application to view the select box.
@@ -84,8 +90,10 @@ def text_classification_models():
     option = st.selectbox('Choice of the model', choice)
     st.write('The chosen model is :', option)
 
+    clf = prediction(option)
+
     user_input_word = st.text_input("Input a sentense: ", 'Merry Christmas!')
-    output_st = scores(option, user_input_word)
+    output_st = scores(clf, user_input_word)
     st.write('The input text is likely to be category :\n', output_st)
 
     
