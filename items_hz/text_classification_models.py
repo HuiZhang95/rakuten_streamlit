@@ -9,13 +9,6 @@ import sklearn
 import pandas as pd
 from items_hz.RNN_pipeline import RNN_pipeline
 from items_hz.SVC_pipeline import SVC_pipeline
-from tensorflow.keras.saving import pickle_utils
-# from tensorflow.python.keras.saving import saving_utils
-
-# from sklearn.ensemble import RandomForestClassifier
-# from sklearn.svm import SVC
-# from sklearn.linear_model import LogisticRegression
-# from sklearn.metrics import confusion_matrix
 
 def text_classification_models():
     
