@@ -1,13 +1,13 @@
 streamlit
-pandas
-numpy
-matplotlib
+pandas=1.5.2
+numpy=1.23.5
+matplotlib=3.9.3
 seaborn
-scikit-learn
+scikit-learn=1.6.0
 pillow
 nltk
 clean-text
-tensorflow
+tensorflow=2.12.0
 
 
 
