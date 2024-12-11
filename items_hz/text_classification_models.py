@@ -7,8 +7,8 @@ from tensorflow.keras import Sequential
 from tensorflow.keras.layers import Embedding, Dense, GlobalAveragePooling1D, RNN, GRUCell, Dropout
 import sklearn
 import pandas as pd
-from items_hz.RNN_pipeline import RNN_pipeline
-from items_hz.SVC_pipeline import SVC_pipeline
+from RNN_pipeline import RNN_pipeline
+from SVC_pipeline import SVC_pipeline
 
 def text_classification_models():
     
@@ -69,6 +69,7 @@ def text_classification_models():
     
     #@st.cache_data
     def load_svc():
+        return np.nan
         with open('images_hz/model_SVC.pkl','rb') as f:
             model, _, _ = pickle.load(f)
         return model
@@ -84,7 +85,7 @@ def text_classification_models():
 
 
     # use the st.selectbox() method to choose between the RandomForest classifier, the SVM classifier and the LogisticRegression classifier. Then return to the Streamlit web application to view the select box.
-    choice = ['RNN', 'SVC']
+    choice = ['RNN']#, 'SVC']
     option = st.selectbox('Choice of the model', choice)
     st.write('The chosen model is :', option)
 
