@@ -57,7 +57,6 @@ def text_classification_models():
     option = st.selectbox('Choice of the model', choice)
     st.write('The chosen model is :', option)
 
-    load_rnn()
     # user_input_word = st.text_input("Input a sentense: ", 'Merry Christmas!')
 
     # output_st = prediction(option, user_input_word)
