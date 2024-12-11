@@ -53,7 +53,7 @@ def text_classification_models():
         st.image(img, use_container_width = True)
 
     # use the st.selectbox() method to choose between the RandomForest classifier, the SVM classifier and the LogisticRegression classifier. Then return to the Streamlit web application to view the select box.
-    choice = ['RNN']#, 'SVC']
+    choice = ['RNN', 'SVC']
     option = st.selectbox('Choice of the model', choice)
     st.write('The chosen model is :', option)
 
