@@ -64,7 +64,7 @@ def text_classification_models():
 
     @st.cache_data
     def load_rnn():
-        with open('model_RNN.pkl','rb') as f:  # Python 3: open(..., 'rb')
+        with open('mages_hz/model_RNN.pkl','rb') as f:  # Python 3: open(..., 'rb')
             _, model, _, _ = pickle.load(f)
         return model
     
@@ -91,7 +91,6 @@ def text_classification_models():
     st.write('The chosen model is :', option)
 
     clf = prediction(option)
-
     user_input_word = st.text_input("Input a sentense: ", 'Merry Christmas!')
     output_st = scores(clf, user_input_word)
     st.write('The input text is likely to be category :\n', output_st)
