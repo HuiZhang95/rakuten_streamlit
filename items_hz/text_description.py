@@ -17,14 +17,14 @@ def text_description():
     with st.expander("click here for details"):
         st.markdown("<h3>Data cleaning approaches</h3>", unsafe_allow_html = True)
 
-        st.write("1. The Unicode characters in the text were converted to ASCII. "
-                 "2. The text data was transformed to lowercase. "
-                 "3. URLs and email addresses were removed. "
-                 "4. Special characters and punctuation were eliminated. "
-                 "5. Repeated characters were removed. "
-                 "6. Extra spaces, tabs, and new lines were cleared. "
-                 "7. Each word was further stemmed and lemmatized. "
-                 "8. Stop words were updated and removed from the remaining text. ")
+        st.write("1. The Unicode characters in the text were converted to ASCII. \n\n"
+                 "2. The text data was transformed to lowercase. \n\n"
+                 "3. URLs and email addresses were removed. \n\n"
+                 "4. Special characters and punctuation were eliminated. \n\n"
+                 "5. Repeated characters were removed. \n\n"
+                 "6. Extra spaces, tabs, and new lines were cleared. \n\n"
+                 "7. Each word was further stemmed and lemmatized. \n\n"
+                 "8. Stop words were updated and removed from the remaining text. \n\n")
         
         st.markdown("<h3>word cloud of each category</h3>", unsafe_allow_html = True)
         img = Image.open("images_hz/text wordcloud.jpg")
