@@ -1,6 +1,7 @@
 import streamlit as st
 from PIL import Image
 import pickle
+import numpy as np
 
 import tensorflow as tf
 from tensorflow.keras import Sequential
@@ -62,17 +63,18 @@ def text_classification_models():
     
     #@st.cache_data
     def load_rnn():
-        model = tf.keras.models.load_model('images_hz/model_RNN.keras')
-        with open('images_hz/model_RNN_tokenizer.pkl','rb') as f:  # Python 3: open(..., 'rb')
-            tokenizer = pickle.load(f)
-        return model, tokenizer
+        pass
+        # model = tf.keras.models.load_model('images_hz/model_RNN.keras')
+        # with open('images_hz/model_RNN_tokenizer.pkl','rb') as f:  # Python 3: open(..., 'rb')
+        #     tokenizer = pickle.load(f)
+        # return model, tokenizer
     
     #@st.cache_data
     def load_svc():
-        return np.nan
-        with open('images_hz/model_SVC.pkl','rb') as f:
-            model, _, _ = pickle.load(f)
-        return model
+        pass
+        # with open('images_hz/model_SVC.pkl','rb') as f:
+        #     model, _, _ = pickle.load(f)
+        # return model
     
     def prediction(classifier, user_input_word):
         if classifier == 'RNN':
