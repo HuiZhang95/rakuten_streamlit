@@ -4,6 +4,7 @@ import pickle
 import numpy as np
 #
 import tensorflow as tf
+from tensorflow import keras
 # from tensorflow.keras import Sequential
 # from tensorflow.keras.layers import Embedding, Dense, GlobalAveragePooling1D, RNN, GRUCell, Dropout
 # import sklearn
