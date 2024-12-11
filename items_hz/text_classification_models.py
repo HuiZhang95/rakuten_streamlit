@@ -4,7 +4,7 @@ from PIL import Image
 def text_classification_models():
     
     st.markdown("<h3>Customized recurrent neural network (RNN)</h3>", unsafe_allow_html = True)
-    with st.expander(" "):
+    with st.expander("click here for details"):
         st.markdown("<h3>Background + procedure</h3>", unsafe_allow_html = True)
 
         st.write("Recurrent layers are designed to capture sequential relationships within the data."
@@ -29,7 +29,7 @@ def text_classification_models():
         st.image(img, use_container_width = True)
 
     st.markdown("<h3>SVM with gridsearch</h3>", unsafe_allow_html = True)
-    with st.expander(" "):
+    with st.expander("click here for details"):
         st.markdown("<h3>Background + procedure (RNN)</h3>", unsafe_allow_html = True)
 
         st.write("SVM aims to identify decision boundaries that maximize the margin between categories,"
