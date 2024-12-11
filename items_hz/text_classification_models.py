@@ -7,6 +7,7 @@ from tensorflow.keras import Sequential
 from tensorflow.keras.layers import Embedding, Dense, GlobalAveragePooling1D, RNN, GRUCell, Dropout
 import sklearn
 import pandas as pd
+from SVC_pipeline import SVC_pipeline
 
 # from sklearn.ensemble import RandomForestClassifier
 # from sklearn.svm import SVC
@@ -66,8 +67,8 @@ def text_classification_models():
     #@st.cache_data
     def load_rnn():
         with open('images_hz/model_RNN.pkl','rb') as f:  # Python 3: open(..., 'rb')
-            _, model, _, _ = pickle.load(f)
-        return model
+            model, tokenizer = pickle.load(f)
+        return model, tokenizer
     
     #@st.cache_data
     def load_svc():
@@ -75,12 +76,13 @@ def text_classification_models():
             model, _, _ = pickle.load(f)
         return model
     
-    def prediction(classifier):
+    def prediction(classifier, user_input_word):
         if classifier == 'RNN':
-            clf = load_rnn()
+            model, tokenizer = load_rnn()
         elif classifier == 'SVC':
-            clf = load_svc()
-        return clf
+            model, tokenizer = load_svc()
+            rsl = SVC_pipeline(model, user_input_word, tokenizer)
+        return rsl
     
     def scores(clf, user_input_word):
         return clf.predict(user_input_word)
@@ -91,9 +93,9 @@ def text_classification_models():
     option = st.selectbox('Choice of the model', choice)
     st.write('The chosen model is :', option)
 
-    clf = prediction(option)
+    
     user_input_word = st.text_input("Input a sentense: ", 'Merry Christmas!')
-    output_st = scores(clf, user_input_word)
+    output_st = prediction(option, user_input_word)
     st.write('The input text is likely to be category :\n', output_st)
 
     
