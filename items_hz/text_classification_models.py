@@ -61,14 +61,13 @@ def text_classification_models():
         st.image(img, use_container_width = True)
 
     
-
-    @st.cache_data
+    #@st.cache_data
     def load_rnn():
         with open('images_hz/model_RNN.pkl','rb') as f:  # Python 3: open(..., 'rb')
             _, model, _, _ = pickle.load(f)
         return model
     
-    @st.cache_data
+    #@st.cache_data
     def load_svc():
         with open('images_hz/model_SVC.pkl','rb') as f:
             model, _, _ = pickle.load(f)
