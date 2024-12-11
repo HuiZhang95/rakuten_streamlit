@@ -7,7 +7,7 @@ from tensorflow.keras import Sequential
 from tensorflow.keras.layers import Embedding, Dense, GlobalAveragePooling1D, RNN, GRUCell, Dropout
 import sklearn
 import pandas as pd
-from SVC_pipeline import SVC_pipeline
+from RNN_pipeline import RNN_pipeline
 
 # from sklearn.ensemble import RandomForestClassifier
 # from sklearn.svm import SVC
@@ -79,6 +79,7 @@ def text_classification_models():
     def prediction(classifier, user_input_word):
         if classifier == 'RNN':
             model, tokenizer = load_rnn()
+            rsl = RNN_pipeline(model, user_input_word, tokenizer)
         elif classifier == 'SVC':
             model, tokenizer = load_svc()
             rsl = SVC_pipeline(model, user_input_word, tokenizer)
