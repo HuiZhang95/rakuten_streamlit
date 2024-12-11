@@ -3,11 +3,10 @@ pandas
 numpy
 matplotlib
 seaborn
-Scikit-learn
+scikit-learn
 pillow
-Re
-Unicodedata
-Nltk
-Cleantext
+unicodedata
+nltk
+cleantext
 
 
