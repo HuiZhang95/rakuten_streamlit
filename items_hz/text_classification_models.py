@@ -9,8 +9,8 @@ import sklearn
 import pandas as pd
 from items_hz.RNN_pipeline import RNN_pipeline
 from items_hz.SVC_pipeline import SVC_pipeline
-# from tensorflow.keras.saving import pickle_utils
-from tensorflow.python.keras.saving import saving_utils
+from tensorflow.keras.saving import pickle_utils
+# from tensorflow.python.keras.saving import saving_utils
 
 # from sklearn.ensemble import RandomForestClassifier
 # from sklearn.svm import SVC
@@ -69,8 +69,9 @@ def text_classification_models():
     
     #@st.cache_data
     def load_rnn():
-        with open('images_hz/model_RNN.pkl','rb') as f:  # Python 3: open(..., 'rb')
-            model, tokenizer = pickle.load(f)
+        model = tf.keras.models.load_model('images_hz/model_RNN.keras')
+        with open('images_hz/model_RNN_tokenizer.pkl','rb') as f:  # Python 3: open(..., 'rb')
+            tokenizer = pickle.load(f)
         return model, tokenizer
     
     #@st.cache_data
@@ -87,9 +88,6 @@ def text_classification_models():
             model, tokenizer = load_svc()
             rsl = SVC_pipeline(model, user_input_word, tokenizer)
         return rsl
-    
-    def scores(clf, user_input_word):
-        return clf.predict(user_input_word)
 
 
     # use the st.selectbox() method to choose between the RandomForest classifier, the SVM classifier and the LogisticRegression classifier. Then return to the Streamlit web application to view the select box.

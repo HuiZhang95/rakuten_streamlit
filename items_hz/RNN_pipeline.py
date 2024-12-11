@@ -107,7 +107,9 @@ def RNN_pipeline(model, input_sentense, tokenizer):
                                                             padding = 'post',
                                                             truncating = 'post'
                                                         )
-    
-    return model.predict(input_sentense)
+    y_pred = model.predict(input_sentense)
+    y_pred1 = np.argmax(y_pred[0,:], axis = 0)
+
+    return [y_pred1, y_pred[0,y_pred1]]
 
 
