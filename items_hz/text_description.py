@@ -106,7 +106,7 @@ def text_description():
         else:
             return ' '.join(words).strip()
         
-    user_input_word = st.text_input("Input a sentense: ", 'Merry Christmas!')
+    user_input_word = st.text_input("Input a sentense to clean: ", 'Merry Christmas!')
     output_st = clean_text(user_input_word)
 
     st.write('Here is the sentense after cleaning :\n', output_st)
