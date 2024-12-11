@@ -1,7 +1,6 @@
 import streamlit as st
 from PIL import Image
 
-
 def ensemble_model():
     
     st.markdown("<h3>Feature fusion approach</h3>", unsafe_allow_html = True)
@@ -25,7 +24,7 @@ def ensemble_model():
         st.image(img, use_container_width = True)
 
         st.markdown("<h3>Results</h3>", unsafe_allow_html = True)
-        st.write("Weighted F1 score is 0.75")
+        st.write("Weighted F1 score is 0.8725")
         img = Image.open("images_hz/feature_fusion result.jpg")
         st.image(img, use_container_width = True)
 
