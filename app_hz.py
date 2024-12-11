@@ -79,7 +79,7 @@ div.main > div {
 """
 )
 
-st.sidebar.image("images_hz/rakuten_logo.png", use_container_width = False)
+st.sidebar.image("images/rakuten_logo.png", use_container_width = False)
 
 menu = st.sidebar.radio("Menu", ["Poject Description",
                              "Data Description: Text",
