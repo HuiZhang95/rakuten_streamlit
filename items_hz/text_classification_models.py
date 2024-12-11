@@ -13,10 +13,10 @@ import pandas as pd
 
 #@st.cache_data
 def load_rnn():
-    model = tf.keras.models.load_model('images_hz/model_RNN.keras')
+    # model = tf.keras.models.load_model('images_hz/model_RNN.keras')
     with open('images_hz/model_RNN_tokenizer.pkl','rb') as f:  # Python 3: open(..., 'rb')
         tokenizer = pickle.load(f)
-    return model, tokenizer
+    return tokenizer
 
 # #@st.cache_data
 # def load_svc():
