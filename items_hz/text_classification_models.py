@@ -2,39 +2,6 @@ import streamlit as st
 from PIL import Image
 import pickle
 import numpy as np
-#
-import tensorflow as tf
-from tensorflow import keras
-from keras.preprocessing.text import Tokenizer
-# from tensorflow.keras import Sequential
-# from tensorflow.keras.layers import Embedding, Dense, GlobalAveragePooling1D, RNN, GRUCell, Dropout
-# import sklearn
-import pandas as pd
-# from items_hz.RNN_pipeline import RNN_pipeline
-# from SVC_pipeline import SVC_pipeline
-
-#@st.cache_data
-def load_rnn():
-    # model = tf.keras.models.load_model('images_hz/model_RNN.keras')
-    with open('images_hz/model_RNN_tokenizer.pkl','rb') as f:  # Python 3: open(..., 'rb')
-        tokenizer = pickle.load(f)
-    return tokenizer
-
-# #@st.cache_data
-# def load_svc():
-#     pass
-#     # with open('images_hz/model_SVC.pkl','rb') as f:
-#     #     model, _, _ = pickle.load(f)
-#     # return model
-
-# def prediction(classifier, user_input_word):
-#     if classifier == 'RNN':
-#         model, tokenizer = load_rnn()
-#         rsl = 5#RNN_pipeline(model, user_input_word, tokenizer)
-#     elif classifier == 'SVC':
-#         model, tokenizer = load_svc()
-#         rsl = 10#SVC_pipeline(model, user_input_word, tokenizer)
-#     return rsl
 
 def text_classification_models():
     
