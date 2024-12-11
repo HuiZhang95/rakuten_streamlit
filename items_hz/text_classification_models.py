@@ -3,7 +3,7 @@ from PIL import Image
 import pickle
 import numpy as np
 #
-# import tensorflow as tf
+import tensorflow as tf
 # from tensorflow.keras import Sequential
 # from tensorflow.keras.layers import Embedding, Dense, GlobalAveragePooling1D, RNN, GRUCell, Dropout
 # import sklearn
@@ -13,11 +13,10 @@ import pandas as pd
 
 # #@st.cache_data
 # def load_rnn():
-#     pass
-#     # model = tf.keras.models.load_model('images_hz/model_RNN.keras')
-#     # with open('images_hz/model_RNN_tokenizer.pkl','rb') as f:  # Python 3: open(..., 'rb')
-#     #     tokenizer = pickle.load(f)
-#     # return model, tokenizer
+#     model = tf.keras.models.load_model('images_hz/model_RNN.keras')
+#     with open('images_hz/model_RNN_tokenizer.pkl','rb') as f:  # Python 3: open(..., 'rb')
+#         tokenizer = pickle.load(f)
+#     return model, tokenizer
 
 # #@st.cache_data
 # def load_svc():
@@ -91,6 +90,7 @@ def text_classification_models():
 
     
     # user_input_word = st.text_input("Input a sentense: ", 'Merry Christmas!')
+
     # output_st = prediction(option, user_input_word)
     # st.write('The input text is likely to be category :\n', output_st)
 
