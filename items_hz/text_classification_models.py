@@ -7,7 +7,7 @@ from tensorflow.keras import Sequential
 from tensorflow.keras.layers import Embedding, Dense, GlobalAveragePooling1D, RNN, GRUCell, Dropout
 import sklearn
 import pandas as pd
-from RNN_pipeline import RNN_pipeline
+from items_hz.RNN_pipeline import RNN_pipeline
 from tensorflow.keras.saving import pickle_utils
 
 # from sklearn.ensemble import RandomForestClassifier
