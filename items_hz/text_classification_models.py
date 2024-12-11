@@ -7,8 +7,8 @@ from tensorflow.keras import Sequential
 from tensorflow.keras.layers import Embedding, Dense, GlobalAveragePooling1D, RNN, GRUCell, Dropout
 import sklearn
 import pandas as pd
-from RNN_pipeline import RNN_pipeline
-from SVC_pipeline import SVC_pipeline
+from items_hz.RNN_pipeline import RNN_pipeline
+# from SVC_pipeline import SVC_pipeline
 
 def text_classification_models():
     
