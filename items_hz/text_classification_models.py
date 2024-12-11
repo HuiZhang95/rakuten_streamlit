@@ -3,6 +3,7 @@ from PIL import Image
 
 def text_classification_models():
     
+    st.markdown("<b2>.stExpander > div1 > div2 { font-size: 20px; }<b2>", unsafe_allow_html=True)
     with st.expander("Customized recurrent neural network (RNN)"):
         st.markdown("<h3>Background + procedure (RNN)</h3>", unsafe_allow_html = True)
 
