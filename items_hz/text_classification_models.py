@@ -2,11 +2,11 @@ import streamlit as st
 from PIL import Image
 import pickle
 import numpy as np
-
-import tensorflow as tf
-from tensorflow.keras import Sequential
-from tensorflow.keras.layers import Embedding, Dense, GlobalAveragePooling1D, RNN, GRUCell, Dropout
-import sklearn
+#
+# import tensorflow as tf
+# from tensorflow.keras import Sequential
+# from tensorflow.keras.layers import Embedding, Dense, GlobalAveragePooling1D, RNN, GRUCell, Dropout
+# import sklearn
 import pandas as pd
 # from items_hz.RNN_pipeline import RNN_pipeline
 # from SVC_pipeline import SVC_pipeline
