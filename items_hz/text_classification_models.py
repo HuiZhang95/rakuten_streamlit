@@ -11,12 +11,12 @@ import pandas as pd
 # from items_hz.RNN_pipeline import RNN_pipeline
 # from SVC_pipeline import SVC_pipeline
 
-# #@st.cache_data
-# def load_rnn():
-#     model = tf.keras.models.load_model('images_hz/model_RNN.keras')
-#     with open('images_hz/model_RNN_tokenizer.pkl','rb') as f:  # Python 3: open(..., 'rb')
-#         tokenizer = pickle.load(f)
-#     return model, tokenizer
+#@st.cache_data
+def load_rnn():
+    model = tf.keras.models.load_model('images_hz/model_RNN.keras')
+    with open('images_hz/model_RNN_tokenizer.pkl','rb') as f:  # Python 3: open(..., 'rb')
+        tokenizer = pickle.load(f)
+    return model, tokenizer
 
 # #@st.cache_data
 # def load_svc():
@@ -88,7 +88,7 @@ def text_classification_models():
     option = st.selectbox('Choice of the model', choice)
     st.write('The chosen model is :', option)
 
-    
+    load_rnn()
     # user_input_word = st.text_input("Input a sentense: ", 'Merry Christmas!')
 
     # output_st = prediction(option, user_input_word)
