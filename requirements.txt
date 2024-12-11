@@ -6,7 +6,7 @@ seaborn
 scikit-learn
 pillow
 nltk
-cleantext
+clean-text
 
 
 
