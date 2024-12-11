@@ -21,7 +21,7 @@ def text_classification_models():
 
         st.write("Recurrent layers are designed to capture sequential relationships within the data."
                 "This is especially important for the text information in the present project. "
-                " "
+                " \n\n"
                 "Procedure: Train-test split --> tokenize sequences --> train model"
                 "Here is the achitechture of the model:")
         
@@ -48,7 +48,7 @@ def text_classification_models():
                  " which helps generalization on unseen data. "
                  "Additionally, SVM uses a subset of training points to define the hyperplane, "
                  "making it memory efficient. This is particularly beneficial for systems with limited resources.. "
-                " "
+                " \n\n"
                 "Procedure: TF-IDF transformation --> search for optimal hyperparameters"
                 "Here is the gridsearch result:")
         
