@@ -11,5 +11,6 @@ python==3.11.5
 tensorflow==2.12.0
 keras==2.12.0
 setuptools
+python3.11-distutils
 
 
