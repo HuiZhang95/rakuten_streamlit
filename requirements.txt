@@ -7,9 +7,4 @@ scikit-learn
 pillow
 nltk
 clean-text
-python
-tensorflow
-keras
-setuptools
-
 
