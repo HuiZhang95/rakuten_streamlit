@@ -8,7 +8,8 @@ from tensorflow.keras.layers import Embedding, Dense, GlobalAveragePooling1D, RN
 import sklearn
 import pandas as pd
 from items_hz.RNN_pipeline import RNN_pipeline
-from tensorflow.keras.saving import pickle_utils
+# from tensorflow.keras.saving import pickle_utils
+from tensorflow.python.keras.saving import saving_utils
 
 # from sklearn.ensemble import RandomForestClassifier
 # from sklearn.svm import SVC
