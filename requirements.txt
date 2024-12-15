@@ -7,4 +7,9 @@ scikit-learn
 pillow
 nltk
 clean-text
-Tensorflow
+mediapipe
+Ftfy
+beautifulsoup4
+lingua
+langdetect
+deep_translator
