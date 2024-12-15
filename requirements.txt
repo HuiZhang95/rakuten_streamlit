@@ -13,4 +13,4 @@ beautifulsoup4
 lingua
 langdetect
 deep_translator
-opencv
+opencv-python
