@@ -64,7 +64,7 @@ def text_classification_models():
     output_st = df.loc[index_df[user_input_number], 'text']
     st.write('Here is the text information :\n\n', output_st)
     
-    choice = ['drag and choose','RNN', 'SVC']
+    choice = ['choose a model','RNN', 'SVC']
     option = st.selectbox('Choice of the model', choice)
     st.write('The chosen model is :', option)
 
