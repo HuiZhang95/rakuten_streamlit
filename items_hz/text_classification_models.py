@@ -62,13 +62,13 @@ def text_classification_models():
     user_input_number = st.number_input("Input a number between 0 and {}: ".format(str(len_df)), 0)
 
     output_st = df.loc[index_df[user_input_number], 'designation']
-    st.write('Here is the text information from designation column:\n\n', output_st)
+    st.write('\nHere is the text information from designation column:\n', output_st)
 
     output_st = df.loc[index_df[user_input_number], 'text']
-    st.write('Here is the text information from description column:\n\n', output_st)
+    st.write('\nHere is the text information from description column:\n', output_st)
 
     output_st = df.loc[index_df[user_input_number], 'text']
-    st.write('Here is the text information after pre-processing:\n\n', output_st)
+    st.write('\nHere is the text information after pre-processing:\n', output_st)
     
     choice = ['choose a model','RNN', 'SVC']
     option = st.selectbox('Choice of the model', choice)
