@@ -10,7 +10,7 @@ clean-text
 mediapipe
 Ftfy
 beautifulsoup4
-lingua
+lingua-language-detector
 langdetect
 deep_translator
 opencv-python

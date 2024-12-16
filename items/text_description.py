@@ -28,9 +28,13 @@ def text_description():
 	
 	st.write("### Preprocessing/Translation")
 
-	work_dir = os.getcwd()
-	dataframe_dir = '\\datasets\\'
-	image_dir = '\\images\\'
+	# work_dir = os.getcwd()
+	# dataframe_dir = '\\datasets\\'
+	# image_dir = '\\images\\'
+
+	work_dir = '/Users/hui/Documents/projects/courses/datascientest/sep24_bds_int_rakuten/StreamlitApp'
+	dataframe_dir = '/datasets/'
+	image_dir = '/images/'
 	
 	df_translated = pd.read_csv( work_dir + dataframe_dir + 'rakuten_train_designation_translation.csv', encoding='utf8')
 	df_translated['designation'] = df_translated['designation'].fillna(str())
