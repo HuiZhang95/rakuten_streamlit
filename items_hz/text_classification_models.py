@@ -84,41 +84,45 @@ def text_classification_models():
 
     # use the st.selectbox() method to choose between the RandomForest classifier, the SVM classifier and the LogisticRegression classifier.
     #Then return to the Streamlit web application to view the select box.
-    df = pd.read_csv('{}rnn_svc_result.csv'.format('datasets/'), index_col = 0)
-    len_df = len(df)
-    index_df = df.index
 
-    user_input_number = st.number_input("Input a number between 0 and {}: ".format(str(len_df)), 0)
+    st.markdown("<h3>Time for game ;-)</h3>", unsafe_allow_html = True)
+    with st.expander("click here for details"):
 
-    output_st = df.loc[index_df[user_input_number], 'designation']
-    st.write('\nHere is the text information from designation column:\n', output_st)
+        df = pd.read_csv('{}rnn_svc_result.csv'.format('datasets/'), index_col = 0)
+        len_df = len(df)
+        index_df = df.index
 
-    output_st = df.loc[index_df[user_input_number], 'text']
-    st.write('\nHere is the text information from description column:\n', output_st)
+        user_input_number = st.number_input("Input a number between 0 and {}: ".format(str(len_df)), 0)
 
-    output_st = df.loc[index_df[user_input_number], 'text']
-    st.write('\nHere is the text information after pre-processing:\n', output_st)
-    
-    choice = ['choose a model','RNN', 'SVC']
-    option = st.selectbox('Choice of the model', choice)
-    st.write('The chosen model is :', option)
+        output_st = df.loc[index_df[user_input_number], 'designation']
+        st.write('\nHere is the text information from designation column:\n', output_st)
 
-    if option == 'drag and choose':
-        st.write('Please choose a model.')
+        output_st = df.loc[index_df[user_input_number], 'text']
+        st.write('\nHere is the text information from description column:\n', output_st)
 
-    if option == 'RNN':
-        output_st = df.loc[index_df[user_input_number], 'y_RNN']
-        st.write('The predicted category is: ', output_st)
+        output_st = df.loc[index_df[user_input_number], 'text']
+        st.write('\nHere is the text information after pre-processing:\n', output_st)
+        
+        choice = ['choose a model','RNN', 'SVC']
+        option = st.selectbox('Choice of the model', choice)
+        st.write('The chosen model is :', option)
 
-        output_st = df.loc[index_df[user_input_number], 'y_true']
-        st.write('The true category is: ', output_st)
-    
-    if option == 'SVC':
-        output_st = df.loc[index_df[user_input_number], 'y_SVC']
-        st.write('The predicted category is: ', output_st)
+        if option == 'drag and choose':
+            st.write('Please choose a model.')
 
-        output_st = df.loc[index_df[user_input_number], 'y_true']
-        st.write('The true category is: ', output_st)
+        if option == 'RNN':
+            output_st = df.loc[index_df[user_input_number], 'y_RNN']
+            st.write('The predicted category is: ', output_st)
+
+            output_st = df.loc[index_df[user_input_number], 'y_true']
+            st.write('The true category is: ', output_st)
+        
+        if option == 'SVC':
+            output_st = df.loc[index_df[user_input_number], 'y_SVC']
+            st.write('The predicted category is: ', output_st)
+
+            output_st = df.loc[index_df[user_input_number], 'y_true']
+            st.write('The true category is: ', output_st)
 
 
     
