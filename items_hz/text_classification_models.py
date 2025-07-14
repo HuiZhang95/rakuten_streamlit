@@ -34,7 +34,7 @@ def text_classification_models():
 
     st.markdown("<h3>SVM with gridsearch</h3>", unsafe_allow_html = True)
     with st.expander("click here for details"):
-        st.markdown("<h3>Background + procedure (RNN)</h3>", unsafe_allow_html = True)
+        st.markdown("<h3>Background + procedure</h3>", unsafe_allow_html = True)
 
         st.write("SVM aims to identify decision boundaries that maximize the margin between categories,"
                  " which helps generalization on unseen data. "
