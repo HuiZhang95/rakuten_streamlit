@@ -110,4 +110,4 @@ elif menu == "Ensemble Classification Models":
 st.sidebar.header('Collaborators')
 
 st.sidebar.write("""<b>Hui Zhang, Phil J. Howson, Torben Hänke</b><br>Text and Image Processing & Modelling,
-                    Mulitlanguage Models, Ensemble Models""", unsafe_allow_html = True)
+                    Ensemble Models""", unsafe_allow_html = True)
