@@ -52,16 +52,29 @@ def text_classification_models():
         st.write("Weighted F1 score is 0.81")
         img = Image.open("images/SVM result.jpg")
         st.image(img, use_container_width = True)
+        
+    
+    st.markdown("<h3>Pre-trained NLP Model: fastText</h3>", unsafe_allow_html = True)
+    with st.expander("click here for details"):
+        st.markdown("<h3>Background + procedure (fastText)</h3>", unsafe_allow_html = True)
+        st.write("""fastText offers the possibility to represent words by vectors that can 
+                 be used in modern machine learning models. The idea of these vectors is to 
+                 capture hidden information about a language, like word analogies or semantics. 
+                 Furthermore it offers the possibility to perform classification tasks in order 
+                 to assign text to multiple classes. fastText is a quite efficient library and the 
+                 adaptation to a new labeled dataset can be performed on a short time scale.
+                 Bojanowski, 2017""")
+        
+        img = Image.open("images/image_01.png")
+        st.image(img, use_container_width = True)
 
-
-    st.markdown("<h3>roBERTa-large</h3>", unsafe_allow_html = True)
+    st.markdown("<h3>Pre-trained NLP Model: roBERTa-large</h3>", unsafe_allow_html = True)
     with st.expander("click here for details"):
         st.markdown("<h3>Background + procedure (roBERTa-large)</h3>", unsafe_allow_html = True)
         st.write("""We have tried 'bert-base-uncased', 'roberta-large', and 'roberta-large'.
                  Within this project the model 'roberta-large' achieved the highest score among the tested models, therefore only the results from this model will be presented here.
-                 max_length=64\n
-                 padding=True\n
-                 truncation=True\n
+                 max_length=64, padding=True, truncation=True. 
+                 Liu, 2019
                  """)
         
         img = Image.open("images/image_04.png")

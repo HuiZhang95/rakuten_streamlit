@@ -2,7 +2,22 @@ import streamlit as st
 from PIL import Image
 
 def ensemble_model():
-    
+    st.markdown("<h3>Voting Classifier</h3>", unsafe_allow_html = True)
+    with st.expander("click here for details"):
+        st.markdown("<h3>Background + procedure</h3>", unsafe_allow_html = True)
+
+        st.write("combines the prediction of models from different modalities via a voting classifier")
+        
+        img = Image.open("images/voting_classifier.jpg")
+        st.image(img, use_container_width = True)
+
+        st.markdown("<h3>Results</h3>", unsafe_allow_html = True)
+        st.write("Weighted F1 score is 0.86")
+        img = Image.open("images/Result_votingClassfier.jpg")
+        st.image(img, use_container_width = True)
+
+
+
     st.markdown("<h3>Feature fusion approach</h3>", unsafe_allow_html = True)
     with st.expander("click here for details"):
         st.markdown("<h3>Background + procedure</h3>", unsafe_allow_html = True)
