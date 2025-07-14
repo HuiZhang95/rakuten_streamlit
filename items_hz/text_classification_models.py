@@ -71,7 +71,7 @@ def text_classification_models():
     st.markdown("<h3>Pre-trained NLP Model: roBERTa-large</h3>", unsafe_allow_html = True)
     with st.expander("click here for details"):
         st.markdown("<h3>Background + procedure (roBERTa-large)</h3>", unsafe_allow_html = True)
-        st.write("""We have tried 'bert-base-uncased', 'roberta-large', and 'roberta-large'.
+        st.write("""We have tried 'bert-base-uncased', 'roberta-base', and 'roberta-large'.
                  Within this project the model 'roberta-large' achieved the highest score among the tested models, therefore only the results from this model will be presented here.
                  max_length=64, padding=True, truncation=True. 
                  Liu, 2019
