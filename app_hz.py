@@ -106,3 +106,8 @@ elif menu == "Image Classification Models":
 
 elif menu == "Ensemble Classification Models":
     ensemble_model()
+
+st.sidebar.header('Collaborators')
+
+st.sidebar.write("""<b>Hui Zhang, Phil J. Howson</b><br>Text and Image Processing & Modelling,
+                    Mulitlanguage Models, Ensemble Models""", unsafe_allow_html = True)
