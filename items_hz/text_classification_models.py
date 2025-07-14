@@ -57,7 +57,6 @@ def text_classification_models():
     st.markdown("<h3>roBERTa-base</h3>", unsafe_allow_html = True)
     with st.expander("click here for details"):
         st.markdown("<h3>Background + procedure (roBERTa-base)</h3>", unsafe_allow_html = True)
-
         st.write("""Our first model was roBERTa-base, trained only on English
              data. We used the translated text and implemented a finally
              formatting of the data using spacy. We tokenized, lemmatized,
@@ -91,10 +90,7 @@ def text_classification_models():
         st.image(img, use_container_width = True)
         img = Image.open("images/mean_attention_map_roBERTa_class_60.png")
         st.image(img, use_container_width = True)
-
-
-    
-
+        
     # use the st.selectbox() method to choose between the RandomForest classifier, the SVM classifier and the LogisticRegression classifier.
     #Then return to the Streamlit web application to view the select box.
     df = pd.read_csv('{}rnn_svc_result.csv'.format('datasets/'), index_col = 0)
