@@ -6,15 +6,15 @@ def image_classification_models():
 
     st.markdown("<h2>Convolutional Neural Networks</h2>", unsafe_allow_html = True)
 
-    st.write("Convolutional neural networks (CNNs) are used extensively in image "
-             "recognition and machine vision models. These deep learning models "
-             "extract spatial heirarchies of features through backpropegation. "
-             "Models use several types of layers, including convolutional layers, "
-             "pooling layers, and fully connected layers in order to process images "
-             "for a variety of tasks, including classification (Yamashita et al., 2018). "
-             "Below is an example image of CNN architecture.")
-
     with st.expander("Click to see example CNN architecture"):
+        st.write("Convolutional neural networks (CNNs) are used extensively in image "
+                "recognition and machine vision models. These deep learning models "
+                "extract spatial heirarchies of features through backpropegation. "
+                "Models use several types of layers, including convolutional layers, "
+                "pooling layers, and fully connected layers in order to process images "
+                "for a variety of tasks, including classification (Yamashita et al., 2018). "
+                "Below is an example image of CNN architecture.")
+        
         img = Image.open("images/cnn_example.jpg")
         st.image(img, use_container_width = True)
 
@@ -24,157 +24,158 @@ def image_classification_models():
 
     st.markdown("<h2>ResNet</h2>", unsafe_allow_html = True)
 
-    st.write("ResNet represented a breakthrough in CNNs. Prior to ResNet, a major issue "
-             "with 'very deep' architectures was that training and validation accuracy "
-             "was reduced. This has been described as the degredation problem. This issue "
-             "was not related to vanishing/exploding gradients as model architectures "
-             "incorporated normalizations which prevented that from occuring. He et al. (2016) "
-             "suggested that the degradation problem could be dealt with by incorporating "
-             "residual learning. Specifically, the authors introduced 'skip connections' "
-             "that explicitly implemented learning of residual features from the previous "
-             "convolutional layer.")
-
     with st.expander("Click to see ResNet50 architecture with 'skip connections'"):
+
+        st.write("ResNet represented a breakthrough in CNNs. Prior to ResNet, a major issue "
+                "with 'very deep' architectures was that training and validation accuracy "
+                "was reduced. This has been described as the degredation problem. This issue "
+                "was not related to vanishing/exploding gradients as model architectures "
+                "incorporated normalizations which prevented that from occuring. He et al. (2016) "
+                "suggested that the degradation problem could be dealt with by incorporating "
+                "residual learning. Specifically, the authors introduced 'skip connections' "
+                "that explicitly implemented learning of residual features from the previous "
+                "convolutional layer.")
+
         img = Image.open("images/resnet50_skip_connections.png")
         st.image(img, use_container_width = True)
 
-    st.write("In order to facilitate better classification of our dataset, we modified the "
-             "ResNet50 backbone slightly, by including additional convolutional layers, with "
-             "skip connections, and a more robust fully connected layer. Our goal was that "
-             "the additional convolutional layers would be trained specifically based on our "
-             "task, while the backbone that has been trained to extract important features "
-             "such as edges and shapes would remain mostly intact. To achive this, we "
-             "additionally froze all the ResNet50 layers aside from the last 3 bottlenecks. "
-             "The model included a total of 91,848,283 parameters, of which, 61,520,360 were "
-             "trainable.")
+        st.write("In order to facilitate better classification of our dataset, we modified the "
+                "ResNet50 backbone slightly, by including additional convolutional layers, with "
+                "skip connections, and a more robust fully connected layer. Our goal was that "
+                "the additional convolutional layers would be trained specifically based on our "
+                "task, while the backbone that has been trained to extract important features "
+                "such as edges and shapes would remain mostly intact. To achive this, we "
+                "additionally froze all the ResNet50 layers aside from the last 3 bottlenecks. "
+                "The model included a total of 91,848,283 parameters, of which, 61,520,360 were "
+                "trainable.")
 
-    custresnet50 = '''
-    class CustomResNet50(nn.Module):
-    def __init__(self, base_model):
-        super(CustomResNet50, self).__init__()
+        custresnet50 = '''
+        class CustomResNet50(nn.Module):
+        def __init__(self, base_model):
+            super(CustomResNet50, self).__init__()
 
-        self.base_model = base_model
-        """
-        skip connections are utilized as in the ResNet architecture to
-        explicitly facilitate residual learning
-        """
-        self.skip_connection1 = nn.Conv2d(2048, 2048, kernel_size = 1,
-                                          stride = 1, padding = 0)
-        """
-        additional convolutional layers are structured with normalization,
-        pooling, and ReLU activations so their weights can be adjusted to
-        the specific needs of our task
-        """
-        self.Conv1 = nn.Sequential(
-            nn.Conv2d(2048, 2048, kernel_size = 3, stride = 1, padding = 1),
-            nn.BatchNorm2d(2048),
-            nn.ReLU(),
-            nn.MaxPool2d(kernel_size = 3, stride = 1, padding = 1))
+            self.base_model = base_model
+            """
+            skip connections are utilized as in the ResNet architecture to
+            explicitly facilitate residual learning
+            """
+            self.skip_connection1 = nn.Conv2d(2048, 2048, kernel_size = 1,
+                                            stride = 1, padding = 0)
+            """
+            additional convolutional layers are structured with normalization,
+            pooling, and ReLU activations so their weights can be adjusted to
+            the specific needs of our task
+            """
+            self.Conv1 = nn.Sequential(
+                nn.Conv2d(2048, 2048, kernel_size = 3, stride = 1, padding = 1),
+                nn.BatchNorm2d(2048),
+                nn.ReLU(),
+                nn.MaxPool2d(kernel_size = 3, stride = 1, padding = 1))
 
-        self.skip_connection2 = nn.Conv2d(2048, 1024, kernel_size = 1,
-                                          stride = 1, padding = 0)
+            self.skip_connection2 = nn.Conv2d(2048, 1024, kernel_size = 1,
+                                            stride = 1, padding = 0)
 
-        self.Conv2 = nn.Sequential(
-            nn.Conv2d(2048, 1024, kernel_size = 3, stride = 1, padding = 1),
-            nn.BatchNorm2d(1024),
-            nn.ReLU(),
-            nn.MaxPool2d(kernel_size = 3, stride = 1, padding = 1))
+            self.Conv2 = nn.Sequential(
+                nn.Conv2d(2048, 1024, kernel_size = 3, stride = 1, padding = 1),
+                nn.BatchNorm2d(1024),
+                nn.ReLU(),
+                nn.MaxPool2d(kernel_size = 3, stride = 1, padding = 1))
 
-        self.skip_connection3 = nn.Conv2d(1024, 512, kernel_size = 1,
-                                          stride = 1, padding = 0)
+            self.skip_connection3 = nn.Conv2d(1024, 512, kernel_size = 1,
+                                            stride = 1, padding = 0)
 
-        self.Conv3 = nn.Sequential(
-            nn.Conv2d(1024, 512, kernel_size = 3, stride = 1, padding = 1),
-            nn.BatchNorm2d(512),
-            nn.ReLU(),
-            nn.MaxPool2d(kernel_size = 3, stride = 1, padding = 1))
-        """
-        averages the the values of input elements to adjust the tensor's
-        spatial dimensions
-        """
-        self.AAPool2d = nn.AdaptiveAvgPool2d((1, 1))
+            self.Conv3 = nn.Sequential(
+                nn.Conv2d(1024, 512, kernel_size = 3, stride = 1, padding = 1),
+                nn.BatchNorm2d(512),
+                nn.ReLU(),
+                nn.MaxPool2d(kernel_size = 3, stride = 1, padding = 1))
+            """
+            averages the the values of input elements to adjust the tensor's
+            spatial dimensions
+            """
+            self.AAPool2d = nn.AdaptiveAvgPool2d((1, 1))
+            
+            self.Flatten = nn.Flatten(start_dim = 1)
+            """
+            multiple fully connected layers are connected for classification,
+            with both dropout and batch normalization in order to regularize
+            the inputs and facilitate convergence
+            """
+            self.fc = nn.Sequential(
+                nn.Linear(512, 256),
+                nn.BatchNorm1d(256),
+                nn.ReLU(),
+                nn.Dropout(0.3),
+                nn.Linear(256, 128),
+                nn.BatchNorm1d(128),
+                nn.ReLU(),
+                nn.Dropout(0.3),
+                nn.Linear(128, 27))
         
-        self.Flatten = nn.Flatten(start_dim = 1)
-        """
-        multiple fully connected layers are connected for classification,
-        with both dropout and batch normalization in order to regularize
-        the inputs and facilitate convergence
-        """
-        self.fc = nn.Sequential(
-            nn.Linear(512, 256),
-            nn.BatchNorm1d(256),
-            nn.ReLU(),
-            nn.Dropout(0.3),
-            nn.Linear(256, 128),
-            nn.BatchNorm1d(128),
-            nn.ReLU(),
-            nn.Dropout(0.3),
-            nn.Linear(128, 27))
-    
-    def forward(self, x):
+        def forward(self, x):
 
-        x = self.base_model(x)
+            x = self.base_model(x)
 
-        skip_connection1 = self.skip_connection1(x)
-        x = self.Conv1(x)
-        x = x + skip_connection1
+            skip_connection1 = self.skip_connection1(x)
+            x = self.Conv1(x)
+            x = x + skip_connection1
+            
+            skip_connection2 = self.skip_connection2(x)
+            x = self.Conv2(x)
+            x = x + skip_connection2
+            
+            skip_connection3 = self.skip_connection3(x)
+            x = self.Conv3(x)
+            x = x + skip_connection3
+
+            x = self.AAPool2d(x)
+            x = self.Flatten(x)
+            x = self.fc(x)
+
+            return x
         
-        skip_connection2 = self.skip_connection2(x)
-        x = self.Conv2(x)
-        x = x + skip_connection2
-        
-        skip_connection3 = self.skip_connection3(x)
-        x = self.Conv3(x)
-        x = x + skip_connection3
+        '''
 
-        x = self.AAPool2d(x)
-        x = self.Flatten(x)
-        x = self.fc(x)
+        # with st.expander("Click to see custom architecture added to Resnet50 backbone"):
+        #     st.markdown(f"```python\n{custresnet50}\n```")
 
-        return x
-    
-    '''
+        st.markdown("<h4>Custom ResNet50 Results</h4>", unsafe_allow_html = True)
 
-    with st.expander("Click to see custom architecture added to Resnet50 backbone"):
-        st.markdown(f"```python\n{custresnet50}\n```")
+        with st.expander("Click to see the CustomResNet50 metrics during training"):
 
-    st.markdown("<h3>Custom ResNet50 Results</h3>", unsafe_allow_html = True)
+            st.write("The CustomResNet50 new model weights were initialized using kaiming "
+                    "initialization, with 'mode = fan_out'. We chose this method because "
+                    "it is well suited for ReLU activation. We chose AdamW as the optimizer, "
+                    "with betas = (0.9, 0.999), eps = 1e-8, weight_decay = 1e-4. The initial "
+                    "learning rate = 1e-6. We used FocalLoss as the loss criterion, due to "
+                    "the fact that it penalizes difficult to classify categories more than "
+                    "easy to classify categories. This is especially valuable when you have "
+                    "a dataset with relatively strong class imbalances, like we do. At Epoch "
+                    "20, we increased the learning rate to 1e-3. At Epoch 30, we lowered the "
+                    "unfrozen ResNet50 layers to 1e-5. At Epoch 38, we lowered the custom "
+                    "layers learning rate to 1e-4. At Epoch 44 the early stoppage was triggered "
+                    "and the model was reset to the best model based on F1-Score, which was "
+                    "Epoch 43. Each of these events are marked on the plots below with dotted "
+                    "vertical lines.")
+            img = Image.open("images/custom_resnet50_results.png")
+            st.image(img, use_container_width = False)
 
-    st.write("The CustomResNet50 new model weights were initialized using kaiming "
-             "initialization, with 'mode = fan_out'. We chose this method because "
-             "it is well suited for ReLU activation. We chose AdamW as the optimizer, "
-             "with betas = (0.9, 0.999), eps = 1e-8, weight_decay = 1e-4. The initial "
-             "learning rate = 1e-6. We used FocalLoss as the loss criterion, due to "
-             "the fact that it penalizes difficult to classify categories more than "
-             "easy to classify categories. This is especially valuable when you have "
-             "a dataset with relatively strong class imbalances, like we do. At Epoch "
-             "20, we increased the learning rate to 1e-3. At Epoch 30, we lowered the "
-             "unfrozen ResNet50 layers to 1e-5. At Epoch 38, we lowered the custom "
-             "layers learning rate to 1e-4. At Epoch 44 the early stoppage was triggered "
-             "and the model was reset to the best model based on F1-Score, which was "
-             "Epoch 43. Each of these events are marked on the plots below with dotted "
-             "vertical lines.")
+        st.write("During the training phase, we were able to achieve a weighted F1-Score "
+                "for the validation set of .60. We then evaluated the model on a final "
+                "test set and achieved a weighted F1-Score of .59. The full classification "
+                "report is below.")
 
-    with st.expander("Click to see the CustomResNet50 metrics during training"):
-        img = Image.open("images/custom_resnet50_results.png")
-        st.image(img, use_container_width = False)
+        with st.expander("Click to see full classification report"):
+                img = Image.open("images/classification_report_custom_resnet_50.png")
+                st.image(img, use_container_width = False)
 
-    st.write("During the training phase, we were able to achieve a weighted F1-Score "
-             "for the validation set of .60. We then evaluated the model on a final "
-             "test set and achieved a weighted F1-Score of .59. The full classification "
-             "report is below.")
+        st.write("We also extracted features for a subset of the images to better "
+                "understand what the Custom ResNet50 model interpreted as important "
+                "features.")
 
-    with st.expander("Click to see full classification report"):
-             img = Image.open("images/classification_report_custom_resnet_50.png")
-             st.image(img, use_container_width = False)
-
-    st.write("We also extracted features for a subset of the images to better "
-             "understand what the Custom ResNet50 model interpreted as important "
-             "features.")
-
-    with st.expander("Click to see feature maps for randomly selected images"):
-             img = Image.open("images/custom_gradcam.png")
-             st.image(img, use_container_width = False)            
+        with st.expander("Click to see feature maps for randomly selected images"):
+                img = Image.open("images/custom_gradcam.png")
+                st.image(img, use_container_width = False)            
 
 
     st.markdown("<h2>EfficientNetV2</h2>", unsafe_allow_html = True)
