@@ -1,9 +1,13 @@
 import streamlit as st
+from PIL import Image
 
 
 def project_description():
     
     st.markdown("<h2>Project Description</h2>", unsafe_allow_html = True)
+
+    img = Image.open("images/coverPage.jpg")
+    st.image(img, use_container_width = True)
 
     st.write("Rakuten was created as an e-commerce plateform in Japan "
              "in 1997. It is one of the largest platforms with over 1.3 "
