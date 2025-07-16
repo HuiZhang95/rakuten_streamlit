@@ -6,7 +6,7 @@ def project_description():
     
     st.markdown("<h2>Project Description</h2>", unsafe_allow_html = True)
 
-    img = Image.open("images/coverPage.jpg")
+    img = Image.open("images/coverPage.png")
     st.image(img, use_container_width = True)
 
     st.write("Rakuten was created as an e-commerce plateform in Japan "
