@@ -209,6 +209,7 @@ def text_description():
         else:
             return ' '.join(words).strip()
         
+    st.markdown("<h3>Would you like to try it?</h3>", unsafe_allow_html = True)
     user_input_word = st.text_input("Input a sentense to clean: ", 'Merry Christmas!')
     output_st = clean_text(user_input_word)
 
