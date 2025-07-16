@@ -18,78 +18,75 @@ def text_description():
     with st.expander("click here for details"):
         st.markdown("<h3>Word count and distribution of each categories</h3>", unsafe_allow_html = True)
         img = Image.open("images/text_1.png")
-        st.image(img, use_container_width = False, width=600)
-        st.write("""(a) representation of the 'prdtypecode' in the dataset. 
-                 (b) word count of the 'designation' column. 
-                 (c) word count of the 'description' column.""")
+        st.image(img, use_container_width = True)
+        st.write("""(a) representation of the 'prdtypecode' in the dataset. \n
+                 (b) word count of the 'designation' column. \n
+                 (c) word count of the 'description' column. \n""")
         
         img = Image.open("images/text_2.png")
-        st.image(img, use_container_width = False, width=600)
+        st.image(img, use_container_width = True)
         st.write("""(a,b) Histogram of detected languages in 'designation' and ‘description’. 
                  The majority of text is French followed by English. 
                  (c,d) Confidence of the detected language for French, English, German showing the multi-language character of input strings.""")
 
     st.markdown("<h3>Preprocessing Text</h3>", unsafe_allow_html = True)
-    st.write("""1. Preprocessing before translation
-             2. The translation
-             3. Preprocessing after translation""")
+    st.write("""1. Preprocessing before translation \n
+             2. The translation \n
+             3. Preprocessing after translation \n""")
 
 
     st.markdown("<h4>1. Preprocessing before translation</h4>", unsafe_allow_html = True)
     with st.expander("click here for details"):
-        st.write("""1. fragments of HTML markup language. e.g. tags like <br />Capacité de charge jusqu&#39;à 150 kg<br />
-                 2. non utf-8 characters, e.g. characters encoded in cp1252/Windows-1252 end others
-                 3. numerous characters that serve formatting, directional or layout purposes (invisible characters or non-printing characters), e.g. (\u200e, \u200b, \xad).
+        st.write("""1. fragments of HTML markup language. e.g. tags like <br />Capacité de charge jusqu&#39;à 150 kg<br /> \n
+                 2. non utf-8 characters, e.g. characters encoded in cp1252/Windows-1252 end others \n
+                 3. numerous characters that serve formatting, directional or layout purposes (invisible characters or non-printing characters), e.g. (\u200e, \u200b, \xad). \n
                  """)
         with st.expander("A comprehensive but probably not complete list is:"):
             st.write("""
-                1. Directionality Marks
-                \u200E: Left-to-Right Mark (LRM)
-                9
-                Helps ensure left-to-right direction in bidirectional text. \u200F: Right-to-Left Mark (RLM)
-                Ensures right-to-left direction in bidirectional text. \u202A: Left-to-Right Embedding (LRE)
-                Starts a left-to-right embedding, overriding the direction of surrounding text. \u202B: Right-to-Left Embedding (RLE)
-                Starts a right-to-left embedding.
-                \u202C: Pop Directional Formatting (PDF)
-                Ends the effect of the last LRE or RLE.
-                \u202D: Left-to-Right Override (LRO)
-                Forces left-to-right direction for all characters until turned off. \u202E: Right-to-Left Override (RLO)
-                Forces right-to-left direction.
-                2. Zero Width Characters
-                \u200B: Zero Width Space (ZWSP)
-                Allows line breaks without visible spaces.
-                \u200C: Zero Width Non-Joiner (ZWNJ)
-                Prevents characters from being combined into a ligature or connected form. \u200D: Zero Width Joiner (ZWJ)
-                Causes two characters to combine into a single glyph, useful in emojis and ligatures.
-                3. Soft Hyphens and Other Hyphens \u00AD: Soft Hyphen (SHY)
-                Appears as a hyphen only if a line break occurs at that position. \u2010: Hyphen
-                A visible hyphen character.
-                \u2011: Non-Breaking Hyphen
-                Similar to a regular hyphen but prevents a line break. 4. Non-Breaking Spaces and Similar
-                \u00A0: Non-Breaking Space (NBSP) Acts as a space but prevents line breaks.
-                
-
-                \u202F: Narrow Non-Breaking Space
-                A narrower version of the NBSP, used in some languages like French. \u205F: Medium Mathematical Space
-                A small amount of space, usually for mathematical text.
-                \u3000: Ideographic Space
-                Full-width space for East Asian text.
-                5. Invisible Control Characters \u2060: Word Joiner (WJ)
-                Prevents line breaks without adding visible space (similar to NBSP but with stricter control). \uFEFF: Zero Width No-Break Space (also Byte Order Mark, BOM)
-                Indicates byte order at the start of a text file or serves as an invisible space elsewhere. \u2066: Left-to-Right Isolate (LRI)
-                Starts a left-to-right isolate to separate directional text. \u2067: Right-to-Left Isolate (RLI)
-                Starts a right-to-left isolate.
-                \u2068: First Strong Isolate (FSI)
-                Uses the direction of the first strong character. \u2069: Pop Directional Isolate (PDI)
-                Ends the isolate effect of LRI, RLI, or FSI.""")
+                1. Directionality Marks \n
+                \u200E: Left-to-Right Mark (LRM) \n
+                Helps ensure left-to-right direction in bidirectional text. \u200F: Right-to-Left Mark (RLM) \n
+                Ensures right-to-left direction in bidirectional text. \u202A: Left-to-Right Embedding (LRE) \n
+                Starts a left-to-right embedding, overriding the direction of surrounding text. \u202B: Right-to-Left Embedding (RLE) \n
+                Starts a right-to-left embedding. \n
+                \u202C: Pop Directional Formatting (PDF) \n
+                Ends the effect of the last LRE or RLE. \n
+                \u202D: Left-to-Right Override (LRO) \n
+                Forces left-to-right direction for all characters until turned off. \u202E: Right-to-Left Override (RLO) \n
+                Forces right-to-left direction. \n
+                2. Zero Width Characters \n
+                \u200B: Zero Width Space (ZWSP) \n
+                Allows line breaks without visible spaces. \n
+                \u200C: Zero Width Non-Joiner (ZWNJ) \n
+                Prevents characters from being combined into a ligature or connected form. \u200D: Zero Width Joiner (ZWJ) \n
+                Causes two characters to combine into a single glyph, useful in emojis and ligatures. \n
+                3. Soft Hyphens and Other Hyphens \u00AD: Soft Hyphen (SHY) \n
+                Appears as a hyphen only if a line break occurs at that positi on. \u2010: Hyphen \n
+                A visible hyphen character. \n
+                \u2011: Non-Breaking Hyphen \n
+                Similar to a regular hyphen but prevents a line break. 4. Non-Breaking Spaces and Similar \n
+                \u00A0: Non-Breaking Space (NBSP) Acts as a space but prevents line breaks. \n
+                \u202F: Narrow Non-Breaking Space \n
+                A narrower version of the NBSP, used in some languages like French. \u205F: Medium Mathematical Space \n
+                A small amount of space, usually for mathematical text. \n
+                \u3000: Ideographic Space \n
+                Full-width space for East Asian text. \n 
+                5. Invisible Control Characters \u2060: Word Joiner (WJ) \n
+                Prevents line breaks without adding visible space (similar to NBSP but with stricter control). \uFEFF: Zero Width No-Break Space (also Byte Order Mark, BOM) \n
+                Indicates byte order at the start of a text file or serves as an invisible space elsewhere. \u2066: Left-to-Right Isolate (LRI) \n
+                Starts a left-to-right isolate to separate directional text. \u2067: Right-to-Left Isolate (RLI) \n
+                Starts a right-to-left isolate. \n
+                \u2068: First Strong Isolate (FSI) \n
+                Uses the direction of the first strong character. \u2069: Pop Directional Isolate (PDI) \n
+                Ends the isolate effect of LRI, RLI, or FSI. \n""") 
             
         st.write("""For the preprocessing we used:
-                 1. beautiful soup (Richardson, 2024) is a package that can be used to remove HTML markup strings from an input text
-                 2. ftfy (Alonso, 2024) and unicodedata.normalize is used to find non utf-8 characters ( from a different code page like cp1252 ) and replace them by the corresponding utf-8 character. This will make the input text more homogeneous.
-                 3. unicodedata is used to find all non-printing characters and replace them with a single space character""")
+                 1. beautiful soup (Richardson, 2024) is a package that can be used to remove HTML markup strings from an input text \n
+                 2. ftfy (Alonso, 2024) and unicodedata.normalize is used to find non utf-8 characters ( from a different code page like cp1252 ) and replace them by the corresponding utf-8 character. This will make the input text more homogeneous. \n
+                 3. unicodedata is used to find all non-printing characters and replace them with a single space character \n""")
         
         img = Image.open("images/text_3.png")
-        st.image(img, use_container_width = False, width=400)
+        st.image(img, use_container_width = True)
         st.write("""Tracing back the development of each preprocessing step. 
                  Upper row 'designation', lower row 'description': string length, word count, number of altered strings and the number of duplicates.""")
 
@@ -99,14 +96,14 @@ def text_description():
         st.write("""
                  1. the source language needs to be detected
                  We used freely usable api of google translate (Google, 2024b) via the 
-                 python api package deep-translator (Baccouri, 2024).
+                 python api package deep-translator (Baccouri, 2024). \n
                  2. the presence of multi-language text strings
                  Our translation is based on the confidence of the detected languages from 
                  three different language detection packages: langdetect, lingua and LiteRT 
-                 (Google, 2024; Danilk, 2024; Stahl, 2024)
+                 (Google, 2024; Danilk, 2024; Stahl, 2024) \n
                  """)
         img = Image.open("images/text_4.png")
-        st.image(img, use_container_width = False, width=300)
+        st.image(img, use_container_width = True)
         st.write("""The result of our translation procedure: 
                  (a,b) histogram of the detected languages before and after translation. 
                  (c,d) histogram of the confidence of the detected language (French, English and German).""")
@@ -115,14 +112,14 @@ def text_description():
     st.markdown("<h4>3. Preprocessing after translation</h4>", unsafe_allow_html = True)
     with st.expander("click here for details"):
         st.write("""
-                 1. The Unicode characters in the text were converted to ASCII. 
-                 2. The text data was transformed to lowercase. 
-                 3. URLs and email addresses were removed. 
-                 4. Special characters and punctuation were eliminated. 
-                 5. Repeated characters were removed. 
-                 6. Extra spaces, tabs, and new lines were cleared. 
-                 7. Each word was further stemmed and lemmatized. 
-                 8. Stop words were updated and removed from the remaining text. 
+                 1. The Unicode characters in the text were converted to ASCII.  \n
+                 2. The text data was transformed to lowercase.  \n
+                 3. URLs and email addresses were removed.  \n
+                 4. Special characters and punctuation were eliminated.  \n
+                 5. Repeated characters were removed.  \n
+                 6. Extra spaces, tabs, and new lines were cleared.  \n
+                 7. Each word was further stemmed and lemmatized.  \n
+                 8. Stop words were updated and removed from the remaining text.  \n
                  """)
 
     st.markdown("<h3>Display of processed text data</h3>", unsafe_allow_html = True)
