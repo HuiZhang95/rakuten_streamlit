@@ -82,6 +82,8 @@ div.main > div {
 
 st.sidebar.image("images/rakuten_logo.png", use_container_width = False)
 
+st.sidebar.write("""<b>E-commerce system""", unsafe_allow_html = True)
+
 menu = st.sidebar.radio("Menu", ["Poject Description",
                             "Overall Data",
                              "Data Description: Text",
