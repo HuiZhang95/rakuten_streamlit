@@ -98,10 +98,10 @@ def text_description():
     st.markdown("<h4>2. The translation</h4>", unsafe_allow_html = True)
     with st.expander("click here for details"):
         st.write("""
-                 1. the source language needs to be detected
+                 1. the source language needs to be detected  \n
                  We used freely usable api of google translate (Google, 2024b) via the 
                  python api package deep-translator (Baccouri, 2024). \n
-                 2. the presence of multi-language text strings
+                 2. the presence of multi-language text strings \n
                  Our translation is based on the confidence of the detected languages from 
                  three different language detection packages: langdetect, lingua and LiteRT 
                  (Google, 2024; Danilk, 2024; Stahl, 2024) \n
