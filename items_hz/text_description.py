@@ -18,13 +18,13 @@ def text_description():
     with st.expander("click here for details"):
         st.markdown("<h3>Word count and distribution of each categories</h3>", unsafe_allow_html = True)
         img = Image.open("images/text_1.jpg")
-        st.image(img, use_container_width = True)
+        st.image(img, use_container_width = False, width=800)
         st.write("""(a) representation of the 'prdtypecode' in the dataset. 
                  (b) word count of the 'designation' column. 
                  (c) word count of the 'description' column.""")
         
         img = Image.open("images/text_2.jpg")
-        st.image(img, use_container_width = True)
+        st.image(img, use_container_width = False, width=600)
         st.write("""(a,b) Histogram of detected languages in 'designation' and ‘description’. 
                  The majority of text is French followed by English. 
                  (c,d) Confidence of the detected language for French, English, German showing the multi-language character of input strings.""")
@@ -89,7 +89,7 @@ def text_description():
                  3. unicodedata is used to find all non-printing characters and replace them with a single space character""")
         
         img = Image.open("images/text_3.jpg")
-        st.image(img, use_container_width = True)
+        st.image(img, use_container_width = False, width=400)
         st.write("""Tracing back the development of each preprocessing step. 
                  Upper row 'designation', lower row 'description': string length, word count, number of altered strings and the number of duplicates.""")
 
@@ -106,7 +106,7 @@ def text_description():
                  (Google, 2024; Danilk, 2024; Stahl, 2024)
                  """)
         img = Image.open("images/text_4.jpg")
-        st.image(img, use_container_width = True)
+        st.image(img, use_container_width = False, width=300)
         st.write("""The result of our translation procedure: 
                  (a,b) histogram of the detected languages before and after translation. 
                  (c,d) histogram of the confidence of the detected language (French, English and German).""")
