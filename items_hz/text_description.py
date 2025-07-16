@@ -84,7 +84,7 @@ def text_description():
                 Uses the direction of the first strong character. \u2069: Pop Directional Isolate (PDI) \n
                 Ends the isolate effect of LRI, RLI, or FSI. \n""") 
             
-        st.write("""For the preprocessing we used:
+        st.write("""For the preprocessing we used: \n
                  1. beautiful soup (Richardson, 2024) is a package that can be used to remove HTML markup strings from an input text \n
                  2. ftfy (Alonso, 2024) and unicodedata.normalize is used to find non utf-8 characters ( from a different code page like cp1252 ) and replace them by the corresponding utf-8 character. This will make the input text more homogeneous. \n
                  3. unicodedata is used to find all non-printing characters and replace them with a single space character \n""")
