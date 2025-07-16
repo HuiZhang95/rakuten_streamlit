@@ -43,6 +43,7 @@ def project_description():
 
     st.write("Text Model: 0.8113")
     st.write("Image Model: 0.5534")
+    st.write("Text+Image ensamble Model: 0.8725")
 
     link = '<a href = "https://challengedata.ens.fr/challenges/35" target ="_blank">Challenge Homepage</a>'
 

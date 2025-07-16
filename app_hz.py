@@ -1,5 +1,6 @@
 import streamlit as st
 from items_hz.project_description import project_description
+from items_hz.overAll_data import overAll_data
 from items_hz.text_description import text_description
 from items_hz.data_description_images import image_description
 from items_hz.text_classification_models import text_classification_models
@@ -82,6 +83,7 @@ div.main > div {
 st.sidebar.image("images/rakuten_logo.png", use_container_width = False)
 
 menu = st.sidebar.radio("Menu", ["Poject Description",
+                            "Overall Data",
                              "Data Description: Text",
                              "Data Description: Images",
                              "Text Classification Models",
@@ -91,6 +93,9 @@ menu = st.sidebar.radio("Menu", ["Poject Description",
 
 if menu == "Poject Description":
     project_description()
+
+if menu == "Overall Data":
+    overAll_data()
     
 elif menu == "Data Description: Text":
     text_description()
