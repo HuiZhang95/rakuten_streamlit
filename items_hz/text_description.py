@@ -17,13 +17,13 @@ def text_description():
     st.markdown("<h3>Information about the text</h3>", unsafe_allow_html = True)
     with st.expander("click here for details"):
         st.markdown("<h3>Word count and distribution of each categories</h3>", unsafe_allow_html = True)
-        img = Image.open("images/text_1.jpg")
-        st.image(img, use_container_width = False, width=800)
+        img = Image.open("images/text_1.png")
+        st.image(img, use_container_width = False, width=600)
         st.write("""(a) representation of the 'prdtypecode' in the dataset. 
                  (b) word count of the 'designation' column. 
                  (c) word count of the 'description' column.""")
         
-        img = Image.open("images/text_2.jpg")
+        img = Image.open("images/text_2.png")
         st.image(img, use_container_width = False, width=600)
         st.write("""(a,b) Histogram of detected languages in 'designation' and ‘description’. 
                  The majority of text is French followed by English. 
@@ -88,7 +88,7 @@ def text_description():
                  2. ftfy (Alonso, 2024) and unicodedata.normalize is used to find non utf-8 characters ( from a different code page like cp1252 ) and replace them by the corresponding utf-8 character. This will make the input text more homogeneous.
                  3. unicodedata is used to find all non-printing characters and replace them with a single space character""")
         
-        img = Image.open("images/text_3.jpg")
+        img = Image.open("images/text_3.png")
         st.image(img, use_container_width = False, width=400)
         st.write("""Tracing back the development of each preprocessing step. 
                  Upper row 'designation', lower row 'description': string length, word count, number of altered strings and the number of duplicates.""")
@@ -105,7 +105,7 @@ def text_description():
                  three different language detection packages: langdetect, lingua and LiteRT 
                  (Google, 2024; Danilk, 2024; Stahl, 2024)
                  """)
-        img = Image.open("images/text_4.jpg")
+        img = Image.open("images/text_4.png")
         st.image(img, use_container_width = False, width=300)
         st.write("""The result of our translation procedure: 
                  (a,b) histogram of the detected languages before and after translation. 
