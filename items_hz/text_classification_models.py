@@ -6,6 +6,29 @@ import pandas as pd
 
 def text_classification_models():
     
+    st.markdown("<h3>SVM with gridsearch</h3>", unsafe_allow_html = True)
+    with st.expander("click here for details"):
+        st.markdown("<h3>Background + procedure</h3>", unsafe_allow_html = True)
+
+        st.write("SVM aims to identify decision boundaries that maximize the margin between categories,"
+                 " which helps generalization on unseen data. "
+                 "Additionally, SVM uses a subset of training points to define the hyperplane, "
+                 "making it memory efficient. This is particularly beneficial for systems with limited resources.. "
+                " \n\n"
+                "Procedure: \n "
+                "TF-IDF transformation --> search for optimal hyperparameters"
+                "Here is the gridsearch result:")
+        
+        img = Image.open("images/SVM model.jpg")
+        st.image(img, use_container_width = True)
+
+        st.markdown("<h3>Results</h3>", unsafe_allow_html = True)
+        st.write("Weighted F1 score is 0.81")
+        img = Image.open("images/SVM result.jpg")
+        st.image(img, use_container_width = True)
+
+    
+    
     st.markdown("<h3>Customized Recurrent Neural Network (RNN)</h3>", unsafe_allow_html = True)
     with st.expander("click here for details"):
         st.markdown("<h3>Background + procedure</h3>", unsafe_allow_html = True)
@@ -30,27 +53,6 @@ def text_classification_models():
         st.image(img, use_container_width = True)
 
         img = Image.open("images/RNN result 2.jpg")
-        st.image(img, use_container_width = True)
-
-    st.markdown("<h3>SVM with gridsearch</h3>", unsafe_allow_html = True)
-    with st.expander("click here for details"):
-        st.markdown("<h3>Background + procedure</h3>", unsafe_allow_html = True)
-
-        st.write("SVM aims to identify decision boundaries that maximize the margin between categories,"
-                 " which helps generalization on unseen data. "
-                 "Additionally, SVM uses a subset of training points to define the hyperplane, "
-                 "making it memory efficient. This is particularly beneficial for systems with limited resources.. "
-                " \n\n"
-                "Procedure: \n "
-                "TF-IDF transformation --> search for optimal hyperparameters"
-                "Here is the gridsearch result:")
-        
-        img = Image.open("images/SVM model.jpg")
-        st.image(img, use_container_width = True)
-
-        st.markdown("<h3>Results</h3>", unsafe_allow_html = True)
-        st.write("Weighted F1 score is 0.81")
-        img = Image.open("images/SVM result.jpg")
         st.image(img, use_container_width = True)
         
     
