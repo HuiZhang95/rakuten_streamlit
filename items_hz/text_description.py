@@ -13,19 +13,120 @@ nltk.download('punkt_tab')
 
 def text_description():
     
-    st.markdown("<h3>After Translation</h3>", unsafe_allow_html = True)
-    with st.expander("click here for details"):
-        st.markdown("<h3>Data cleaning approaches</h3>", unsafe_allow_html = True)
 
-        st.write("1. The Unicode characters in the text were converted to ASCII. \n"
-                 "2. The text data was transformed to lowercase. \n"
-                 "3. URLs and email addresses were removed. \n"
-                 "4. Special characters and punctuation were eliminated. \n"
-                 "5. Repeated characters were removed. \n"
-                 "6. Extra spaces, tabs, and new lines were cleared. \n"
-                 "7. Each word was further stemmed and lemmatized. \n"
-                 "8. Stop words were updated and removed from the remaining text. \n")
+    st.markdown("<h3>Information about the text</h3>", unsafe_allow_html = True)
+    with st.expander("click here for details"):
+        st.markdown("<h3>Word count and distribution of each categories</h3>", unsafe_allow_html = True)
+        img = Image.open("images/text_1.jpg")
+        st.image(img, use_container_width = True)
+        st.write("""(a) representation of the 'prdtypecode' in the dataset. 
+                 (b) word count of the 'designation' column. 
+                 (c) word count of the 'description' column.""")
         
+        img = Image.open("images/text_2.jpg")
+        st.image(img, use_container_width = True)
+        st.write("""(a,b) Histogram of detected languages in 'designation' and ‘description’. 
+                 The majority of text is French followed by English. 
+                 (c,d) Confidence of the detected language for French, English, German showing the multi-language character of input strings.""")
+
+    st.markdown("<h3>Preprocessing Text</h3>", unsafe_allow_html = True)
+    st.write("""1. Preprocessing before translation
+             2. The translation
+             3. Preprocessing after translation""")
+
+
+    st.markdown("<h4>1. Preprocessing before translation</h4>", unsafe_allow_html = True)
+    with st.expander("click here for details"):
+        st.write("""1. fragments of HTML markup language. e.g. tags like <br />Capacité de charge jusqu&#39;à 150 kg<br />
+                 2. non utf-8 characters, e.g. characters encoded in cp1252/Windows-1252 end others
+                 3. numerous characters that serve formatting, directional or layout purposes (invisible characters or non-printing characters), e.g. (\u200e, \u200b, \xad).
+                 """)
+        with st.expander("A comprehensive but probably not complete list is:"):
+            st.write("""
+                1. Directionality Marks
+                \u200E: Left-to-Right Mark (LRM)
+                9
+                Helps ensure left-to-right direction in bidirectional text. \u200F: Right-to-Left Mark (RLM)
+                Ensures right-to-left direction in bidirectional text. \u202A: Left-to-Right Embedding (LRE)
+                Starts a left-to-right embedding, overriding the direction of surrounding text. \u202B: Right-to-Left Embedding (RLE)
+                Starts a right-to-left embedding.
+                \u202C: Pop Directional Formatting (PDF)
+                Ends the effect of the last LRE or RLE.
+                \u202D: Left-to-Right Override (LRO)
+                Forces left-to-right direction for all characters until turned off. \u202E: Right-to-Left Override (RLO)
+                Forces right-to-left direction.
+                2. Zero Width Characters
+                \u200B: Zero Width Space (ZWSP)
+                Allows line breaks without visible spaces.
+                \u200C: Zero Width Non-Joiner (ZWNJ)
+                Prevents characters from being combined into a ligature or connected form. \u200D: Zero Width Joiner (ZWJ)
+                Causes two characters to combine into a single glyph, useful in emojis and ligatures.
+                3. Soft Hyphens and Other Hyphens \u00AD: Soft Hyphen (SHY)
+                Appears as a hyphen only if a line break occurs at that position. \u2010: Hyphen
+                A visible hyphen character.
+                \u2011: Non-Breaking Hyphen
+                Similar to a regular hyphen but prevents a line break. 4. Non-Breaking Spaces and Similar
+                \u00A0: Non-Breaking Space (NBSP) Acts as a space but prevents line breaks.
+                
+
+                \u202F: Narrow Non-Breaking Space
+                A narrower version of the NBSP, used in some languages like French. \u205F: Medium Mathematical Space
+                A small amount of space, usually for mathematical text.
+                \u3000: Ideographic Space
+                Full-width space for East Asian text.
+                5. Invisible Control Characters \u2060: Word Joiner (WJ)
+                Prevents line breaks without adding visible space (similar to NBSP but with stricter control). \uFEFF: Zero Width No-Break Space (also Byte Order Mark, BOM)
+                Indicates byte order at the start of a text file or serves as an invisible space elsewhere. \u2066: Left-to-Right Isolate (LRI)
+                Starts a left-to-right isolate to separate directional text. \u2067: Right-to-Left Isolate (RLI)
+                Starts a right-to-left isolate.
+                \u2068: First Strong Isolate (FSI)
+                Uses the direction of the first strong character. \u2069: Pop Directional Isolate (PDI)
+                Ends the isolate effect of LRI, RLI, or FSI.""")
+            
+        st.write("""For the preprocessing we used:
+                 1. beautiful soup (Richardson, 2024) is a package that can be used to remove HTML markup strings from an input text
+                 2. ftfy (Alonso, 2024) and unicodedata.normalize is used to find non utf-8 characters ( from a different code page like cp1252 ) and replace them by the corresponding utf-8 character. This will make the input text more homogeneous.
+                 3. unicodedata is used to find all non-printing characters and replace them with a single space character""")
+        
+        img = Image.open("images/text_3.jpg")
+        st.image(img, use_container_width = True)
+        st.write("""Tracing back the development of each preprocessing step. 
+                 Upper row 'designation', lower row 'description': string length, word count, number of altered strings and the number of duplicates.""")
+
+
+    st.markdown("<h4>2. The translation</h4>", unsafe_allow_html = True)
+    with st.expander("click here for details"):
+        st.write("""
+                 1. the source language needs to be detected
+                 We used freely usable api of google translate (Google, 2024b) via the 
+                 python api package deep-translator (Baccouri, 2024).
+                 2. the presence of multi-language text strings
+                 Our translation is based on the confidence of the detected languages from 
+                 three different language detection packages: langdetect, lingua and LiteRT 
+                 (Google, 2024; Danilk, 2024; Stahl, 2024)
+                 """)
+        img = Image.open("images/text_4.jpg")
+        st.image(img, use_container_width = True)
+        st.write("""The result of our translation procedure: 
+                 (a,b) histogram of the detected languages before and after translation. 
+                 (c,d) histogram of the confidence of the detected language (French, English and German).""")
+
+
+    st.markdown("<h4>3. Preprocessing after translation</h4>", unsafe_allow_html = True)
+    with st.expander("click here for details"):
+        st.write("""
+                 1. The Unicode characters in the text were converted to ASCII. 
+                 2. The text data was transformed to lowercase. 
+                 3. URLs and email addresses were removed. 
+                 4. Special characters and punctuation were eliminated. 
+                 5. Repeated characters were removed. 
+                 6. Extra spaces, tabs, and new lines were cleared. 
+                 7. Each word was further stemmed and lemmatized. 
+                 8. Stop words were updated and removed from the remaining text. 
+                 """)
+
+    st.markdown("<h3>Display of processed text data</h3>", unsafe_allow_html = True)
+    with st.expander("click here for details"):
         st.markdown("<h3>word cloud of each category</h3>", unsafe_allow_html = True)
         img = Image.open("images_hz/text wordcloud.jpg")
         st.image(img, use_container_width = True)
