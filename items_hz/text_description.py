@@ -19,25 +19,29 @@ def text_description():
         st.markdown("<h3>Word count and distribution of each categories</h3>", unsafe_allow_html = True)
         img = Image.open("images/text_1.png")
         st.image(img, use_container_width = True)
-        st.write("""(a) representation of the 'prdtypecode' in the dataset. \n
+        st.write("""
+                 (a) representation of the 'prdtypecode' in the dataset. \n
                  (b) word count of the 'designation' column. \n
                  (c) word count of the 'description' column. \n""")
         
         img = Image.open("images/text_2.png")
         st.image(img, use_container_width = True)
-        st.write("""(a,b) Histogram of detected languages in 'designation' and ‘description’. 
+        st.write("""
+                 (a,b) Histogram of detected languages in 'designation' and ‘description’. 
                  The majority of text is French followed by English. 
                  (c,d) Confidence of the detected language for French, English, German showing the multi-language character of input strings.""")
 
     st.markdown("<h3>Preprocessing Text</h3>", unsafe_allow_html = True)
-    st.write("""1. Preprocessing before translation \n
+    st.write("""
+             1. Preprocessing before translation \n
              2. The translation \n
              3. Preprocessing after translation \n""")
 
 
     st.markdown("<h4>1. Preprocessing before translation</h4>", unsafe_allow_html = True)
     with st.expander("click here for details"):
-        st.write("""1. fragments of HTML markup language. e.g. tags like <br />Capacité de charge jusqu&#39;à 150 kg<br /> \n
+        st.write("""
+                1. fragments of HTML markup language. e.g. tags like <br />Capacité de charge jusqu&#39;à 150 kg<br /> \n
                  2. non utf-8 characters, e.g. characters encoded in cp1252/Windows-1252 end others \n
                  3. numerous characters that serve formatting, directional or layout purposes (invisible characters or non-printing characters), e.g. (\u200e, \u200b, \xad). \n
                  """)
